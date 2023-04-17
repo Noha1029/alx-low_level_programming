@@ -1,20 +1,18 @@
 #include "dog.h"
 #include <stdlib.h>
 #include <stdio.h>
-
 /**
- * new_dog - new dog
- * @name: name's dog
- * @age: age's dog
- * @owner: owner's dog
- * Return: newdog
- */
-
-dog_t *new_dog(char *na, float age, char *owner)
+* new_dog - new dog
+* @name: name's dog
+* @age: age's dog
+* @owner: owner's dog
+* Return: newdog
+*/
+dog_t *new_dog(char *name, float age, char *owner)
 {
 int i = 0, j = 0, k;
 dog_t *doge;
-while (na[i] != '\0')
+while (name[i] != '\0')
 i++;
 while (owner[j] != '\0')
 j++;
@@ -24,21 +22,21 @@ if (doge == NULL)
 free(doge);
 return (NULL);
 }
-doge->na = malloc(i * sizeof(doge->na));
-if (doge->na == NULL)
+doge->name = malloc(i * sizeof(doge->name));
+if (doge->name == NULL)
 {
-free(doge->na);
+free(doge->name);
 free(doge);
 return (NULL);
 }
 for (k = 0; k <= i; k++)
-doge->na[k] = na[k];
+doge->name[k] = name[k];
 doge->age = age;
 doge->owner = malloc(j * sizeof(doge->owner));
 if (doge->owner == NULL)
 {
 free(doge->owner);
-free(doge->na);
+free(doge->name);
 free(doge);
 return (NULL);
 }
