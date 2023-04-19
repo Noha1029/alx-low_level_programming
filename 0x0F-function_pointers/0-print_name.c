@@ -1,13 +1,13 @@
-#include "functions_pointers.h"
+#include "function_pointers.h"
 /**
-* print_na - prints a na
-* @na :na's main
-* @f : void function
+* print_name - prints a name
+* @name: name's main
+* @f: void function
 */
-void print_na(char *name, void ( *f)(char *))
+void print_name(char *name, void (*f)(char *))
 {
-if (na && f)
+if (name && f)
 {
-f(na);
+f(name);
 }
 }
