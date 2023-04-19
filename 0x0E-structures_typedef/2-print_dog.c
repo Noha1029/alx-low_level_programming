@@ -11,11 +11,11 @@ if (d)
 {
 if (d->na != NULL)
 {
-printf("Name: %s\n", d->na);
+printf("Na: %s\n", d->na);
 }
 else
 {
-printf("Name: (nil)\n");
+printf("Na: (nil)\n");
 }
 printf("Age: %f\n", d->age);
 if (d->owner)
