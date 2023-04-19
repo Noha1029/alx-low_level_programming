@@ -6,14 +6,14 @@
 * @action: pointer to function
 * Return: No
 */
-void array_iterator(int *array, size_t size, void (*act)(int))
+void array_iterator(int *array, size_t size, void (*action)(int))
 {
 unsigned int i;
-if (array && size && act)
+if (array && size && action)
 {
 for (i = 0; i < size; i++)
 {
-(*act)(array[i]);
+(*action)(array[i]);
 }
 }
 }
