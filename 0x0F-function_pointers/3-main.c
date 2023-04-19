@@ -10,7 +10,7 @@
 int main(int arga, char *argb[])
 {
 int R;
-if (argca != 4)
+if (arga != 4)
 {
 printf("Error\n");
 exit(98);
