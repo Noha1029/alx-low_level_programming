@@ -1,72 +1,49 @@
 #include "variadic_functions.h"
-#include <stdlib.h>
-#include <stdio.h>
 /**
-* print_int - prints int
-* @list: arguments from print_all
-*/
-void print_int(va_list list)
-{
-printf("%d", va_arg(list, int));
-}
-/**
-* print_float - prints float
-* @list: arguments from print_all
-*/
-void print_float(va_list list)
-{
-printf("%f", va_arg(list, double));
-}
-/**
-* print_char - prints int
-* @list: arguments from print_all
-*/
-void print_char(va_list list)
-{
-printf("%c", va_arg(list, int));
-}
-/**
-* print_str - prints string
-* @list: arguments from print_all
-*/
-void print_str(va_list list)
-{
-char *s = va_arg(list, char *);
-s == NULL ? printf("(nil)") : printf("%s", s);
-}
-/**
-* print_all - prints any type
-* @format: arguments to print
+* print_all - prints anything.
+* @format: a list of types of arguments passed to the function.
+*
+* Return: no return.
 */
 void print_all(const char * const format, ...)
 {
-va_list list;
-int a = 0, b = 0;
-char *sep = "";
-printTypeStruct printType[] = {
-{ "a", print_int },
-{ "f", print_float },
-{ "c", print_char },
-{ "s", print_str },
-{NULL, NULL}
-};
-va_start(list, format);
+va_list valist;
+unsigned int a = 0, b, c = 0;
+char *str;
+const char t_arg[] = "cifs";
+va_start(valist, format);
 while (format && format[a])
 {
 b = 0;
-while (b < 4)
+while (t_arg[b])
 {
-if (*printType[b].type == format[a])
+if (format[a] == t_arg[b] && c)
 {
-printf("%s", sep);
-printType[b].printer(list);
-sep = ", ";
+printf(", ");
+break;
+} b++;
+}
+switch (format[a])
+{
+case 'c':
+printf("%c", va_arg(valist, int)), c = 1;
+break;
+case 'a':
+printf("%d", va_arg(valist, int)), c = 1;
+break;
+case 'f':
+printf("%f", va_arg(valist, double)), c = 1;
+break;
+case 's':
+str = va_arg(valist, char *), c = 1;
+if (!str)
+{
+printf("(nil)");
 break;
 }
-b++;
+printf("%s", str);
+break;
+} a++;
 }
-a++;
-}
-printf("\n");
-va_end(list);
+printf("\n"), va_end(valist);
 }
